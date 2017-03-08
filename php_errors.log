@@ -1,0 +1,17 @@
+[09-Jan-2017 10:17:40 Europe/Paris] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[HY000] [2005] Unknown MySQL server host 'iutdoua-web.univ-lyon1.fr:3306' (0)' in /home/UNIV-LYON1/p1501664/public_html/CPOA-2016/Model/Model.php:23
+Stack trace:
+#0 /home/UNIV-LYON1/p1501664/public_html/CPOA-2016/Model/Model.php(23): PDO->__construct('mysql:host=iutd...', 'p1501664', '240058')
+#1 /home/UNIV-LYON1/p1501664/public_html/CPOA-2016/Model/Model.php(10): Model::getBdd()
+#2 /home/UNIV-LYON1/p1501664/public_html/CPOA-2016/Model/VIPManager.php(6): Model->executerRequete('Select typeVIP,...')
+#3 /home/UNIV-LYON1/p1501664/public_html/CPOA-2016/index.php(7): VIPManager->getVIP()
+#4 {main}
+  thrown in /home/UNIV-LYON1/p1501664/public_html/CPOA-2016/Model/Model.php on line 23
+[19-Jan-2017 23:53:25 Europe/Paris] PHP Parse error:  syntax error, unexpected '$user' (T_VARIABLE) in /home/UNIV-LYON1/p1501664/public_html/CPOA-2016/bin/Cannes.php on line 3
+[19-Jan-2017 23:54:04 Europe/Paris] PHP Parse error:  syntax error, unexpected '$user' (T_VARIABLE) in /home/UNIV-LYON1/p1501664/public_html/CPOA-2016/bin/Cannes.php on line 3
+[20-Jan-2017 12:47:52 Europe/Paris] PHP Notice:  Undefined index: genre in /home/UNIV-LYON1/p1501664/public_html/CPOA-2016/index.php on line 56
+[20-Jan-2017 12:47:52 Europe/Paris] PHP Fatal error:  Uncaught exception 'PDOException' with message 'SQLSTATE[23000]: Integrity constraint violation: 1048 Column 'genrePersonne' cannot be null' in /home/UNIV-LYON1/p1501664/public_html/CPOA-2016/Model/VIPManager.php:13
+Stack trace:
+#0 /home/UNIV-LYON1/p1501664/public_html/CPOA-2016/Model/VIPManager.php(13): PDOStatement->execute(Array)
+#1 /home/UNIV-LYON1/p1501664/public_html/CPOA-2016/index.php(63): VIPManager->addVIP('', 'France', NULL, ' ')
+#2 {main}
+  thrown in /home/UNIV-LYON1/p1501664/public_html/CPOA-2016/Model/VIPManager.php on line 13

@@ -1,0 +1,105 @@
+@import url('https://fonts.googleapis.com/css?family=Comfortaa');
+
+body{
+  background-color: black;
+  color: white;
+  font-family: 'Comfortaa', cursive;
+
+}
+
+.not{
+  display: inherit;
+    color: red;
+    text-align: inherit;
+    padding: inherit;
+}
+img{
+  width: 10%;
+  display: block;
+  float: left;
+}
+
+nav{
+  margin-left: 30%;
+  padding-bottom: 2%;
+}
+
+ul {
+    list-style-type: none;
+    margin: auto;
+    overflow: hidden;
+}
+
+li {
+    float: left;
+}
+
+li a {
+    display: block;
+    color: white;
+    text-align: center;
+    padding: 16px;
+    text-decoration: none;
+}
+
+li a:hover {
+    background-color: gold;
+    border-radius: 5%;
+}
+
+.active {
+  background-color: grey;
+  border-radius: 5%;
+}
+
+table{
+  margin: auto;
+  margin-top: 2%;
+  border-radius: 5px;
+  border: 2px solid gold;
+  background-color: white;
+  text-align: center;
+  width: 60%;
+}
+
+table th{
+  border-bottom: 2px solid black;
+  padding: 1%;
+}
+
+table tr{
+  color: black;
+}
+
+input[type=submit]{
+  margin-left: 50%;;
+}
+
+input[type=radio]{
+  margin-left: 50%;;
+}
+
+
+label
+{
+	display: block;
+	width: 250px;
+	float: left;
+  margin-left: 40%
+
+}
+
+
+.image_bouton{
+   background-image: url("../img/bouton.png");
+   background-size: contain;
+   background-repeat: no-repeat;
+   background-color: black;
+   width: 6em;
+   height: 6em;
+   border: none;
+}
+
+.image_bouton:hover{
+  opacity: 0.5;
+}
