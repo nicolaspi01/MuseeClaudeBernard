@@ -103,3 +103,9 @@ label
 .image_bouton:hover{
   opacity: 0.5;
 }
+
+.oeuvres{
+  float: inherit;
+  margin: auto;
+  width: 15em;
+}
