@@ -6,19 +6,19 @@
 	require("Model/Model.php");
 	require("Model/VIPManager.php");
   $vm = new VIPManager();
-	$results = $vm -> getVIP();
+	$results = $vm -> getOeuvres();
 	if(!isset($_GET["action"])){
 		require("Views/connexion.php");
 	}
 	else{
 
-		if($_GET["action"] == "listeVIP"){
+		if($_GET["action"] == "listeOeuvres"){
 			$activeList='active';
-			require("Views/vip.php");
+			require("Views/oeuvres.php");
 			if(isset($_GET['supprimerVip'])){
 				$idVip=$_GET['supprimerVip'];
 				$vm -> supprimerVip($idVip);
-				header('Location: index.php?action=listeVIP');
+				header('Location: index.php?action=listeOeuvres');
 
 			}
 		}

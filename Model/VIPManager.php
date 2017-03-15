@@ -2,8 +2,8 @@
 
 	class VIPManager extends Model{
 
-        public function getVIP(){
-      		$liste=$this -> executerRequete("Select VIP.numPersonne, typeVIP, nomPersonne, nationalitePersonne, genrePersonne from VIP, Personne where VIP.numPersonne = Personne.numPersonne");
+        public function getOeuvres(){
+      		$liste=$this -> executerRequete("Select idOeuvre, Intitule, Auteur from OEUVRE");
 					$resultat = $liste ->fetchAll(PDO::FETCH_ASSOC);
 					return $resultat;
         }
