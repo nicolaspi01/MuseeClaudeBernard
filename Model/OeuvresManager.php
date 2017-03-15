@@ -2,11 +2,11 @@
 
 	class OeuvresManager extends Model{
 
-        public function getOeuvres(){
-      		$liste=$this -> executerRequete("Select idOeuvre, Intitule, Auteur from OEUVRE");
-					$resultat = $liste ->fetchAll(PDO::FETCH_ASSOC);
-					return $resultat;
-        }
+		        public function getOeuvres(){
+		      		$liste=$this -> executerRequete("Select idOeuvre, Intitule, Auteur from OEUVRE");
+							$resultat = $liste ->fetchAll(PDO::FETCH_ASSOC);
+							return $resultat;
+		        }
 
 				public function addVIP($nom,$nat,$genre,$type){
 					$resultat = self::getBdd()->prepare('INSERT INTO Personne VALUES (NULL,?,?,NULL,?)');

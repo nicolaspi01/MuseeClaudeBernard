@@ -3,14 +3,42 @@
 	session_start();
 	$activeList='0';
 	$activeAdd='0';
+
 	require("Model/Model.php");
+	
 	require("Model/OeuvresManager.php");
+
+	require("Model/Connexion.php");
+
   $om = new OeuvresManager();
+  $conn = new Connexion();
 	$results = $om -> getOeuvres();
 	if(!isset($_GET["action"])){
 		require("Views/connexion.php");
 	}
 	else{
+
+		if($_GET["action"] == "verifco"){
+
+				$login=$_POST['identifiant'];
+				$password=$_POST['pass'];
+
+				if( $conn->conn($login,$password) == true){
+					$_SESSION['Membre']=true;
+					header('Location: index.php?action=listeOeuvres');
+					exit;
+				}elseif( $conn->verifAdmin($login,$password) == true){
+					$_SESSION['Admin']=true;
+					header('Location: index.php?action=listeOeuvres');
+					exit;
+				}else{
+					header('Location: Views/refuse.php' );
+					exit;
+				}
+		}
+
+
+
 
 		if($_GET["action"] == "listeOeuvres"){
 			$activeList='active';

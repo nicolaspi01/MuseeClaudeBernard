@@ -9,7 +9,7 @@
 		  </head>
 
 			<body>
-			<form method="post" action="index.php?action=listeOeuvres">
+			<form method="post" action="index.php?action=verifco">
        <p>
            <label for="identifiant">Identifiant :</label>
            <input type="text" name="identifiant" id="identifiant" />

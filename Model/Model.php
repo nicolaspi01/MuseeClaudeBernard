@@ -2,7 +2,7 @@
 	abstract class Model{
 
 		// Objet PDO d'accès à la BD
-		private static $bdd;
+		public static $bdd;
 
 		// Exécute une requête SQL éventuellement paramétrée
 		protected function executerRequete($sql, $params = null) {
@@ -16,7 +16,7 @@
 			return $resultat;
 		}
 
-		protected static function getBdd() {
+		public static function getBdd() {
 			if(self::$bdd == null){
 				require('./bin/Cannes.php');
 
@@ -26,5 +26,7 @@
 			}
 			return self::$bdd;
 		}
+
 	}
+
 ?>
