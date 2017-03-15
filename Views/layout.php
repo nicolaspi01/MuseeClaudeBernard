@@ -11,7 +11,7 @@ echo'<!DOCTYPE html>
   <body>
 
     <nav>
-        <img src="Web/img/cannes.png"/>
+        <img src="Web/img/clb.png"/>
         <ul>
             <li class="'.$activeList.'"><a href="./index.php?action=listeOeuvres">Liste des Oeuvres</a></li>
             <li class="'.$activeAdd.'"><a href="./index.php?action=ajoutVIP">Ajouter une Oeuvre</a></li>
