@@ -9,7 +9,7 @@
 		  </head>
 
 			<body>
-			<form method="post" action="index.php?action=listeVIP">
+			<form method="post" action="index.php?action=listeOeuvres">
        <p>
            <label for="identifiant">Identifiant :</label>
            <input type="text" name="identifiant" id="identifiant" />
