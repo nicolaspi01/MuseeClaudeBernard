@@ -4,9 +4,9 @@
 	$activeList='0';
 	$activeAdd='0';
 	require("Model/Model.php");
-	require("Model/VIPManager.php");
-  $vm = new VIPManager();
-	$results = $vm -> getOeuvres();
+	require("Model/OeuvresManager.php");
+  $om = new OeuvresManager();
+	$results = $om -> getOeuvres();
 	if(!isset($_GET["action"])){
 		require("Views/connexion.php");
 	}

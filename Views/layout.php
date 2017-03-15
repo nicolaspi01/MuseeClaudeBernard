@@ -6,7 +6,7 @@ echo'<!DOCTYPE html>
     <meta charset="utf-8"/>
     <link rel="stylesheet" href="Web/CSS/style.css"/>
 	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Cannes</title>
+    <title>Musée Claude Bernard</title>
   </head>
   <body>
 
