@@ -9,6 +9,7 @@
 	</tr>';
 	foreach ($results as $ligne){
 				echo '<tr>
+				<td><img src="Web/img/'.str_replace(' ', '', $ligne['Intitule']).'.jpg"</td>
 				<td>'.$ligne['Intitule'].'</td>
 				<td>'.$ligne['Auteur'].'</td>
 				</tr>';
