@@ -25,17 +25,20 @@
 				$password=$_POST['pass'];
 
 				if( $conn->conn($login,$password) == true){
-					$_SESSION['Membre']=true;
-					header('Location: index.php?action=listeOeuvres');
-					exit;
-				}elseif( $conn->verifAdmin($login,$password) == true){
-					$_SESSION['Admin']=true;
-					header('Location: index.php?action=listeOeuvres');
-					exit;
-				}else{
+					$_SESSION['Connecte']=true;
+				}
+
+				else{
 					header('Location: Views/refuse.php' );
 					exit;
 				}
+
+				if( $conn->verifAdmin($login,$password) == true){
+					$_SESSION['Admin']=true;
+				}
+
+				header('Location: index.php?action=listeOeuvres');
+					exit;
 		}
 
 
@@ -54,6 +57,10 @@
 		}
 
 
+	if($_GET["action"] == "deconnection"){
+		session_destroy();
+		header('Location: index.php');
+	}
 
 
 		if($_GET["action"] == "listeOeuvres"){
