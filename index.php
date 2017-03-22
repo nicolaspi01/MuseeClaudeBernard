@@ -5,13 +5,14 @@
 	$activeAdd='0';
 
 	require("Model/Model.php");
-
+	require("Model/Inscription.php");
 	require("Model/OeuvresManager.php");
-
 	require("Model/Connexion.php");
 
   $om = new OeuvresManager();
   $conn = new Connexion();
+  $ins = new Inscription();
+
 	$results = $om -> getOeuvres();
 	if(!isset($_GET["action"])){
 		require("Views/connexion.php");
@@ -35,6 +36,21 @@
 					header('Location: Views/refuse.php' );
 					exit;
 				}
+		}
+
+
+
+
+		if($_GET["action"] == "inscrip"){
+			require("Views/inscription.php");
+		}
+		if($_GET["action"] == "verifinscrip"){
+			//$ins->existe($_POST['email'],$_POST['pass']);
+			$ins->insc($_POST['nom'],$_POST['prenom'],$_POST['email'],$_POST['pass']);
+
+
+			header('Location: index.php?action=listeOeuvres');
+			exit;
 		}
 
 
