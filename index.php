@@ -66,6 +66,15 @@
 
 			}
 		}
+		
+		
+				// devenir mecene
+		if($_GET["action"] == "FaireunDon"){
+			$activeAdd='active';
+			require("Views/FaireDon.php");
+
+		}
+		
 
 		elseif ($_GET["action"] == "modifierVip") {
 			$num=$_GET['id'];

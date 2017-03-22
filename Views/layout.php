@@ -15,6 +15,7 @@ echo'<!DOCTYPE html>
         <ul>
             <li class="'.$activeList.'"><a href="./index.php?action=listeOeuvres">Liste des Oeuvres</a></li>
             <li class="'.$activeAdd.'"><a href="./index.php?action=ajoutOeuvre">Ajouter une Oeuvre</a></li>
+			<li class="'.$activeAdd.'"><a href="./index.php?action=FaireunDon">Faire un don</a></li>
             <li><a href="./index.php">Déconnexion</a></li>
         </ul>
     </nav>';
