@@ -5,7 +5,7 @@
 	$activeAdd='0';
 
 	require("Model/Model.php");
-	
+
 	require("Model/OeuvresManager.php");
 
 	require("Model/Connexion.php");
@@ -76,20 +76,21 @@
 			require("Views/modifier.php");
 		}
 
-		elseif($_GET["action"] == "ajoutVIP"){
+		elseif($_GET["action"] == "ajoutOeuvre"){
 			$activeAdd="active";
-			require("Views/ajoutVIP.php");
+			require("Views/ajoutOeuvre.php");
 			if(isset($_POST['nom'])){
 				$nom=$_POST['nom'];
+				$auteur=$_POST['auteur'];
 				$type=$_POST['type'];
-				$genre=$_POST['genre'];
-				$nat=$_POST['Nationalite'];
-				$typeM="";
-				foreach ($type as $key => $value) {
-						$typeM=$typeM.$value;
-						$typeM=$typeM." ";
+				$mouve=$_POST['Mouvement'];
+				$annee=$_POST["annee"];
+				if(isset($_FILES['fichier'])){ //on vérifie si l'image à été envoyée
+					$fichier=$_FILES['fichier'];
+					require("Views/upload.php");
 				}
-				$vm -> addVIP($nom,$nat,$genre,$typeM);
+				$om -> addOeuvre($nom,$auteur,$type,$mouve,$annee);
+				print_r($message);
 			}
 		}
 

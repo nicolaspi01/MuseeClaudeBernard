@@ -14,7 +14,7 @@ echo'<!DOCTYPE html>
         <img src="Web/img/clb.png"/>
         <ul>
             <li class="'.$activeList.'"><a href="./index.php?action=listeOeuvres">Liste des Oeuvres</a></li>
-            <li class="'.$activeAdd.'"><a href="./index.php?action=ajoutVIP">Ajouter une Oeuvre</a></li>
+            <li class="'.$activeAdd.'"><a href="./index.php?action=ajoutOeuvre">Ajouter une Oeuvre</a></li>
             <li><a href="./index.php">Déconnexion</a></li>
         </ul>
     </nav>';
