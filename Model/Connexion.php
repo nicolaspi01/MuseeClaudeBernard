@@ -6,8 +6,10 @@
 			$requete= self::getBdd()->query("SELECT idPers FROM PERS where email='$user' AND mdp='$pw'");
 			$nbligne = $requete->fetch();
 
-			if( $nbligne >0)
+			if( $nbligne >0){
+				$_SESSION["email"] = $user;
 				return true;
+			}
 		}
 
 

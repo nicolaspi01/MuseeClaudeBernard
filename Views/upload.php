@@ -1,120 +1,37 @@
 <?php
-
-/************************************************************
- * Script realise par Emacs
- * Crée le 19/12/2004
- * Maj : 23/06/2008
- * Licence GNU / GPL
- * webmaster@apprendre-php.com
- * http://www.apprendre-php.com
- * http://www.hugohamon.com
- *
- * Changelog:
- *
- * 2008-06-24 : suppression d'une boucle foreach() inutile
- * qui posait problème. Merci à Clément Robert pour ce bug.
- *
- *************************************************************/
-
-/************************************************************
- * Definition des constantes / tableaux et variables
- *************************************************************/
-
-// Constantes
-define('TARGET', '/Web/img');    // Repertoire cible
-define('MAX_SIZE', 100000);    // Taille max en octets du fichier
-define('WIDTH_MAX', 8000);    // Largeur max de l'image en pixels
-define('HEIGHT_MAX', 8000);    // Hauteur max de l'image en pixels
-
-// Tableaux de donnees
-$tabExt = array('jpg','gif','png','jpeg');    // Extensions autorisees
-$infosImg = array();
-
-// Variables
-$extension = '';
-$message = '';
-$nomImage = '';
-
-
-/************************************************************
- * Creation du repertoire cible si inexistant
- *************************************************************/
-if( !is_dir(TARGET) ) {
-  if( !mkdir(TARGET, 0755) ) {
-    exit('Erreur : le répertoire cible ne peut-être créé ! Vérifiez que vous diposiez des droits suffisants pour le faire ou créez le manuellement !');
-  }
-}
-
-/************************************************************
- * Script d'upload
- *************************************************************/
-if(!empty($_POST))
+$dossier = 'Web/img';
+$fichier = basename($_FILES['fichier']['name']);
+$taille_maxi = 100000;
+$taille = filesize($_FILES['fichier']['tmp_name']);
+$extensions = array('.png', '.gif', '.jpg', '.jpeg');
+$extension = strrchr($_FILES['fichier']['name'], '.');
+//Début des vérifications de sécurité...
+if(!in_array($extension, $extensions)) //Si l'extension n'est pas dans le tableau
 {
-  // On verifie si le champ est rempli
-  if( !empty($fichier['name']))
-  {
-    // Recuperation de l'extension du fichier
-    $extension  = pathinfo($fichier['name'], PATHINFO_EXTENSION);
-
-    // On verifie l'extension du fichier
-    if(in_array(strtolower($extension),$tabExt))
-    {
-      // On recupere les dimensions du fichier
-      $infosImg = getimagesize($fichier['tmp_name']);
-      print_r($infosImg);
-
-      // On verifie le type de l'image
-      if($infosImg[2] >= 1 && $infosImg[2] <= 14)
-      {
-        // On verifie les dimensions et taille de l'image
-        if(($infosImg[0] <= WIDTH_MAX) && ($infosImg[1] <= HEIGHT_MAX) && (filesize($fichier['tmp_name']) <= MAX_SIZE))
-        {
-          // Parcours du tableau d'erreurs
-          if(isset($fichier['error'])
-            && UPLOAD_ERR_OK === $fichier['error'])
-          {
-            // On renomme le fichier
-            $nomImage = md5(uniqid()) .'.'. $extension;
-            print_r($nomImage);
-
-            // Si c'est OK, on teste l'upload
-            if(move_uploaded_file($fichier['tmp_name'], TARGET.$nomImage))
-            {
-              $message = 'Upload réussi !';
-            }
-            else
-            {
-              // Sinon on affiche une erreur systeme
-              $message = 'Problème lors de l\'upload !';
-            }
-          }
-          else
-          {
-            $message = 'Une erreur interne a empêché l\'uplaod de l\'image';
-          }
-        }
-        else
-        {
-          // Sinon erreur sur les dimensions et taille de l'image
-          $message = 'Erreur dans les dimensions de l\'image !';
-        }
-      }
-      else
-      {
-        // Sinon erreur sur le type de l'image
-        $message = 'Le fichier à uploader n\'est pas une image !';
-      }
-    }
-    else
-    {
-      // Sinon on affiche une erreur pour l'extension
-      $message = 'L\'extension du fichier est incorrecte !';
-    }
-  }
-  else
-  {
-    // Sinon on affiche une erreur pour le champ vide
-    $message = 'Veuillez remplir le formulaire svp !';
-  }
+     $erreur = 'Vous devez uploader un fichier de type png, gif, jpg, jpeg, txt ou doc...';
+}
+if($taille>$taille_maxi)
+{
+     $erreur = 'Le fichier est trop gros...';
+}
+if(!isset($erreur)) //S'il n'y a pas d'erreur, on upload
+{
+     //On formate le nom du fichier ici...
+     $fichier = strtr($fichier,
+          'ÀÁÂÃÄÅÇÈÉÊËÌÍÎÏÒÓÔÕÖÙÚÛÜÝàáâãäåçèéêëìíîïðòóôõöùúûüýÿ',
+          'AAAAAACEEEEIIIIOOOOOUUUUYaaaaaaceeeeiiiioooooouuuuyy');
+     $fichier = preg_replace('/([^.a-z0-9]+)/i', '-', $fichier);
+     if(move_uploaded_file($_FILES['fichier']['tmp_name'], $dossier . $fichier)) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
+     {
+          echo 'Upload effectué avec succès !';
+     }
+     else //Sinon (la fonction renvoie FALSE).
+     {
+          echo 'Echec de l\'upload !';
+     }
+}
+else
+{
+     echo $erreur;
 }
 ?>
