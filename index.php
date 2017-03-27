@@ -8,10 +8,13 @@
 	require("Model/Inscription.php");
 	require("Model/OeuvresManager.php");
 	require("Model/Connexion.php");
+	require("Model/MonCompte.php");
+
 
   $om = new OeuvresManager();
   $conn = new Connexion();
   $ins = new Inscription();
+  $compte = new MonCompte();
 
 	$results = $om -> getOeuvres();
 	if(!isset($_GET["action"])){
@@ -25,20 +28,32 @@
 				$password=$_POST['pass'];
 
 				if( $conn->conn($login,$password) == true){
-					$_SESSION['Membre']=true;
-					header('Location: index.php?action=listeOeuvres');
-					exit;
-				}elseif( $conn->verifAdmin($login,$password) == true){
-					$_SESSION['Admin']=true;
-					header('Location: index.php?action=listeOeuvres');
-					exit;
-				}else{
+				
+									$_SESSION['Connecte']=true;
+				}
+
+				else{
 					header('Location: Views/refuse.php' );
 					exit;
 				}
+
+				if( $conn->verifAdmin($login,$password) == true){
+					$_SESSION['Admin']=true;
+				}
+
+				header('Location: index.php?action=listeOeuvres');
+					exit;
 		}
 
 
+		if($_GET["action"] == "moncompte"){
+			$_SESSION["adresse"] = $compte->getAdresse();
+			$_SESSION["daten"] = $compte->getDaten();
+			$_SESSION["codep"] = $compte->getCodep();
+			$_SESSION["tel"] = $compte -> getNum();	
+			require("Views/moncompte.php");
+			exit;
+		}
 
 
 		if($_GET["action"] == "inscrip"){
@@ -54,6 +69,10 @@
 		}
 
 
+	if($_GET["action"] == "deconnection"){
+		session_destroy();
+		header('Location: index.php');
+	}
 
 
 		if($_GET["action"] == "listeOeuvres"){
@@ -66,6 +85,15 @@
 
 			}
 		}
+		
+		
+				// devenir mecene
+		if($_GET["action"] == "FaireunDon"){
+			$activeAdd='active';
+			require("Views/FaireDon.php");
+
+		}
+		
 
 		elseif ($_GET["action"] == "modifierVip") {
 			$num=$_GET['id'];
