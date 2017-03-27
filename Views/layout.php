@@ -15,7 +15,7 @@ echo'<!DOCTYPE html>
         <ul>
             <li class="'.$activeList.'"><a href="./index.php?action=listeOeuvres">Liste des Oeuvres</a></li>
            ';
-         
+
         if ( isset($_SESSION['Admin']))
            if(  ($_SESSION['Admin']==true) )
                 echo '<li class="'.$activeAdd.'"><a href="./index.php?action=ajoutOeuvre">Ajouter une Oeuvre</a></li>';
@@ -27,16 +27,18 @@ echo'<!DOCTYPE html>
                  if( isset($_SESSION['Admin']) &&  $_SESSION['Admin']!=true )
                          echo ' <li class="'.$activeAdd.'"><a href="./index.php?action=FaireunDon">Faire un don</a></li>';
                  elseif (  !isset($_SESSION['Admin']) )
+                         echo ' <li class="'.$activeAdd.'"><a href="./index.php?action=Reservation">Reserver visite guidée</a></li>';
                          echo ' <li class="'.$activeAdd.'"><a href="./index.php?action=FaireunDon">Faire un don</a></li>';
-                
+
+
 
                 echo '<li><a href="./index.php?action=moncompte">Mon compte</a></li>';
                 echo '<li><a href="./index.php?action=deconnection">Déconnexion</a></li>';
            }
 
-           
-echo '            
-          
+
+echo '
+
         </ul>
     </nav>';
 

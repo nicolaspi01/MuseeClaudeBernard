@@ -55,6 +55,11 @@
 					$maj->execute(array($id,$datedebut,$contenuAction,$dateFin));
 				}
 
+				public function addVisite($Intitul,$sujet,$nbpers,$date){
+					$maj = self::getBdd()->prepare('INSERT INTO VISITE VALUES (NULL,?,?,?,?)');
+					$maj->execute(array($Intitul,$date,$nbpers,$sujet));
+				}
+
 				public function supprimerAction($id){
 					$maj = self::getBdd()->prepare('DELETE FROM Action WHERE id=?');
 					$maj->execute(array($id));
