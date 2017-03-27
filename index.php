@@ -96,17 +96,46 @@
 			$activeAdd="active";
 			require("Views/ajoutOeuvre.php");
 			if(isset($_POST['nom'])){
+				if(isset($_FILES['avatar']))
+				{
+
+				      $dossier = $_SERVER['DOCUMENT_ROOT']."/MuseeClaudeBernard/Web/img/";
+							$fichier = basename($_FILES['avatar']['name']);
+							$taille_maxi = 900000000000000;
+							$taille = filesize($_FILES['avatar']['tmp_name']);
+						
+
+							if($taille>$taille_maxi)
+							{
+							     $erreur = 'Le fichier est trop gros...';
+							}
+							if(!isset($erreur)) //S'il n'y a pas d'erreur, on upload
+							{
+							     //On formate le nom du fichier ici...
+							     $fichier = "/".$_POST["nom"];
+							     if(move_uploaded_file($_FILES['avatar']['tmp_name'], $dossier . $fichier.".jpg")) //Si la fonction renvoie TRUE, c'est que ça a fonctionné...
+							     {
+							          echo 'Upload effectué avec succès !';
+							     }
+							     else //Sinon (la fonction renvoie FALSE).
+							     {
+							          echo 'Echec de l\'upload !';
+							     }
+							}
+							else
+							{
+							     echo $erreur;
+							}
+				}
+
 				$nom=$_POST['nom'];
 				$auteur=$_POST['auteur'];
 				$type=$_POST['type'];
 				$mouve=$_POST['Mouvement'];
 				$annee=$_POST["annee"];
-				if(isset($_FILES['fichier'])){ //on vérifie si l'image à été envoyée
-					$fichier=$_FILES['fichier'];
-					require("Views/upload.php");
-				}
 				$om -> addOeuvre($nom,$auteur,$type,$mouve,$annee);
-				print_r($message);
+				//script upload
+
 			}
 		}
 

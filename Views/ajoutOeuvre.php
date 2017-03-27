@@ -1,7 +1,7 @@
 <?php
 	$titre="Liste des VIP";
 	ob_start();
-  echo'<form method="post" action="index.php?action=ajoutOeuvre">
+  echo'<form method="post" action="index.php?action=ajoutOeuvre" enctype="multipart/form-data">
     <p>
       <label for="Nom">Nom de l\'oeuvre :</label>
       <input type="text" name="nom" id="nom" />
@@ -27,9 +27,8 @@
 	 </p>
 
 	 <p>
-			<label for="fichier_a_uploader" title="Recherchez le fichier à uploader !">Envoyer le fichier :</label>
-			<input type="hidden" name="MAX_FILE_SIZE" value="<?php echo MAX_SIZE; ?>" />
-			<input name="fichier" type="file" id="fichier_a_uploader" />
+		<input type="hidden" name="MAX_FILE_SIZE" value="9999999999999999999999999999999999">
+		<label for="avatar">Photo :</label><input type="file" name="avatar">
 	 </p>
 
 
