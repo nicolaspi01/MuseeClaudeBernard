@@ -21,7 +21,7 @@ echo'<form method="post" action="index.php?action=ajoutOeuvre">
 	</p>
 
 	<p>
-		<label for="num">Téléphone :  '. $_SESSION["tel"]  . ' </label>
+		<label for="num">Téléphone :  ' .'0'. $_SESSION["tel"]  . ' </label>
 		<input type="number" name="num"  />
 	</p>
 

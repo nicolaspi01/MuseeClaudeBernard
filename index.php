@@ -48,7 +48,9 @@
 
 		if($_GET["action"] == "moncompte"){
 			$_SESSION["adresse"] = $compte->getAdresse();
-			//$_SESSION["codep"] = $compte->getAdresse();	
+			$_SESSION["daten"] = $compte->getDaten();
+			$_SESSION["codep"] = $compte->getCodep();
+			$_SESSION["tel"] = $compte -> getNum();	
 			require("Views/moncompte.php");
 			exit;
 		}
