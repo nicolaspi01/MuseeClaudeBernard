@@ -73,15 +73,16 @@
 
 			}
 		}
-		
-		
-				// devenir mecene
+
+
+		// devenir mecene
 		if($_GET["action"] == "FaireunDon"){
 			$activeAdd='active';
 			require("Views/FaireDon.php");
 
 		}
-		
+
+
 
 		elseif ($_GET["action"] == "modifierVip") {
 			$num=$_GET['id'];
@@ -125,6 +126,21 @@
 				print_r($message);
 			}
 		}
+
+				//visite
+				elseif($_GET["action"] == "Reservation"){
+					$activeAdd='active';
+					require("Views/reservation.php");
+					if(isset($_POST['Intitul'])){
+						$Intitul=$_POST['Intitul'];
+						$sujet=$_POST['sujet'];
+						$nbpers=$_POST['nbpers'];
+						$date=$_POST['date'];
+						$om -> addVisite($Intitul,$sujet,$nbpers,$date);
+						print_r("Envoyé ! :)");
+						}
+						//print_r($message);
+					}
 
 		elseif($_GET["action"] == "echangeAction"){
 			$num=$_GET['id'];
