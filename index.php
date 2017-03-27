@@ -8,10 +8,13 @@
 	require("Model/Inscription.php");
 	require("Model/OeuvresManager.php");
 	require("Model/Connexion.php");
+	require("Model/MonCompte.php");
+
 
   $om = new OeuvresManager();
   $conn = new Connexion();
   $ins = new Inscription();
+  $compte = new MonCompte();
 
 	$results = $om -> getOeuvres();
 	if(!isset($_GET["action"])){
@@ -25,7 +28,8 @@
 				$password=$_POST['pass'];
 
 				if( $conn->conn($login,$password) == true){
-					$_SESSION['Connecte']=true;
+				
+									$_SESSION['Connecte']=true;
 				}
 
 				else{
@@ -42,6 +46,12 @@
 		}
 
 
+		if($_GET["action"] == "moncompte"){
+			$_SESSION["adresse"] = $compte->getAdresse();
+			//$_SESSION["codep"] = $compte->getAdresse();	
+			require("Views/moncompte.php");
+			exit;
+		}
 
 
 		if($_GET["action"] == "inscrip"){
