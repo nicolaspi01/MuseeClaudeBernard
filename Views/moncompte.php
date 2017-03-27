@@ -1,7 +1,7 @@
 <?php
 $titre="Mon compte";
 ob_start();
-echo'<form method="post" action="index.php?action=ajoutOeuvre">
+echo'<form method="post" action="index.php?action=Modifier">
 
 <h1> Bonjour <i>' . $_SESSION["email"]. '</i> </h1>
 	<p>
@@ -16,8 +16,8 @@ echo'<form method="post" action="index.php?action=ajoutOeuvre">
 
 
 	<p>
-		<label for="type">Date de naissance :  '. $_SESSION["daten"]  . ' </label>
-		<input type="text" name="datenaissance" placeholder="">
+		<label for="daten">Date de naissance :  '. $_SESSION["daten"]  . ' </label>
+		<input type="text" name="daten" placeholder="">
 	</p>
 
 	<p>
@@ -27,7 +27,7 @@ echo'<form method="post" action="index.php?action=ajoutOeuvre">
 
 
 
-<input type="submit" value="Ajouter" />
+<input type="submit" value="Modifier" />
 </form>';
 $contenu=ob_get_clean();
 require("Views/layout.php");
