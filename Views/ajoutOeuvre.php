@@ -28,7 +28,7 @@
 
 	 <p>
 		<input type="hidden" name="MAX_FILE_SIZE" value="9999999999999999999999999999999999">
-		<label for="avatar">Photo :</label><input type="file" name="avatar">
+		<label for="avatar">Photo d\'oeuvre :</label><input type="file" name="avatar">
 	 </p>
 
 
