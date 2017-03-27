@@ -13,6 +13,19 @@ body{
     text-align: inherit;
     padding: inherit;
 }
+
+#Don{
+margin-left: 36%;
+margin-top: 10%;
+}
+
+
+#merci{
+margin-left: 9 %;
+margin-top: 10%;
+text-align: center;
+
+}
 img{
   width: 10%;
   display: block;
