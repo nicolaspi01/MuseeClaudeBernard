@@ -1,14 +1,8 @@
 <?php
-echo '<!DOCTYPE html>
-<html>
-<head>
-	<meta charset="utf-8"/>
-	<link rel="stylesheet" href="Web/CSS/style.css"/>
-	<meta name="viewport" content="width=device-width, initial-scale=1.0">
-	<title>Inscription</title>
-</head>
+	$titre="Inscription";
+	ob_start();
 
-<body>
+echo '
 
 	<form method="post" action="index.php?action=verifinscrip">
 
@@ -32,6 +26,8 @@ echo '<!DOCTYPE html>
 		<input type="submit" value="S\'inscrire" /></br>
 		<a href=".">Vous avez déjà un compte ?</a>
 	</form>
+';
+	$contenu=ob_get_clean();
+	require("Views/layout.php");
 
-</body>';
 ?>
