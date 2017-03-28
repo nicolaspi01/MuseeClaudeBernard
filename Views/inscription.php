@@ -1,7 +1,7 @@
 <?php
 	$titre="Inscription";
 	ob_start();
-
+  $_SESSION["accueil"]=true;
 echo '
 
 	<form method="post" action="index.php?action=verifinscrip">
@@ -24,8 +24,7 @@ echo '
 		</p>
 
 		<input type="submit" value="S\'inscrire" /></br>
-		<a href=".">Vous avez déjà un compte ?</a>
-	</form>
+		</form>
 ';
 	$contenu=ob_get_clean();
 	require("Views/layout.php");

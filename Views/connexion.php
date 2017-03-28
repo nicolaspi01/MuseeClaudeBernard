@@ -1,7 +1,7 @@
 <?php
 	$titre="Connexion	";
 	ob_start();
-
+  $_SESSION["accueil"]=true;
 echo '
 			<form method="post" action="index.php?action=verifco">
        <p>
@@ -14,8 +14,7 @@ echo '
       </p>
 
            <input type="submit" value="Se connecter" /></br>
-           <a href="index.php?action=inscrip">Vous n\'avez pas de compte ?</a>
-
+       
     </form>';
 	$contenu=ob_get_clean();
 	require("Views/layout.php");

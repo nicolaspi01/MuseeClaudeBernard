@@ -21,6 +21,7 @@ if(!isset($_GET["action"])){
 	require("Views/connexion.php");
 }
 else{
+	$_SESSION["accueil"]=false;
 
 	if($_GET["action"] == "verifco"){
 
