@@ -21,11 +21,10 @@
 					$maj->execute(array($type,$id));
 				}
 
-				public function supprimerVip($id){
-					$maj = self::getBdd()->prepare('DELETE FROM VIP WHERE numPersonne=?');
+				public function supprimerOeuvre($id){
+					$maj = self::getBdd()->prepare('DELETE FROM OEUVRE WHERE idOeuvre=?');
 					$maj->execute(array($id));
-					$maj2 = self::getBdd()->prepare('DELETE FROM Personne WHERE numPersonne=?');
-					$maj2->execute(array($id));
+					
 				}
 
 				public function getEchange($id){

@@ -92,16 +92,14 @@ else{
 	if($_GET["action"] == "listeOeuvres"){
 		$activeList='active';
 		require("Views/oeuvres.php");
-		if(isset($_GET['supprimerVip'])){
-			$idVip=$_GET['supprimerVip'];
-			$vm -> supprimerVip($idVip);
-			header('Location: index.php?action=listeOeuvres');
-
-		}
+		
 	}
 
-
-
+	if($_GET["action"] == "Supp"){
+			$id = $_GET["id"];
+			$om -> supprimerOeuvre($id);	
+			header('Location: index.php?action=listeOeuvres');
+		}
 
 
 				// devenir mecene
