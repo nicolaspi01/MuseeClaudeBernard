@@ -46,7 +46,7 @@ else{
 		exit;
 	}
 
-	if($_GET["action"] == "Modifier"){
+	elseif($_GET["action"] == "Modifier"){
 		if ( strlen($_POST["adresse"])>0)
 			$compte->setAdresse( $_POST["adresse"] );
 		if ( strlen($_POST["codep"])>0)
@@ -61,8 +61,30 @@ else{
 
 	}
 
+	elseif($_GET["action"] == "inscrip"){
+		require("Views/inscription.php");
+	}
+	elseif($_GET["action"] == "verifinscrip"){
+			//$ins->existe($_POST['email'],$_POST['pass']);
+		$ins->insc($_POST['nom'],$_POST['prenom'],$_POST['email'],$_POST['pass']);
+		header('Location: index.php?action=listeOeuvres');
+		exit;
+	}
 
-	if($_GET["action"] == "moncompte"){
+
+	elseif($_GET["action"] == "deconnection"){
+		session_destroy();
+		header('Location: index.php');
+	}
+
+
+	elseif($_GET["action"] == "listeOeuvres"){
+		$activeList='active';
+		require("Views/oeuvres.php");
+		
+	}
+	
+	elseif($_GET["action"] == "moncompte"){
 		$_SESSION["adresse"] = $compte->getAdresse();
 		$_SESSION["daten"] = $compte->getDaten();
 		$_SESSION["codep"] = $compte->getCodep();
@@ -72,30 +94,7 @@ else{
 	}
 
 
-	if($_GET["action"] == "inscrip"){
-		require("Views/inscription.php");
-	}
-	if($_GET["action"] == "verifinscrip"){
-			//$ins->existe($_POST['email'],$_POST['pass']);
-		$ins->insc($_POST['nom'],$_POST['prenom'],$_POST['email'],$_POST['pass']);
-		header('Location: index.php?action=listeOeuvres');
-		exit;
-	}
-
-
-	if($_GET["action"] == "deconnection"){
-		session_destroy();
-		header('Location: index.php');
-	}
-
-
-	if($_GET["action"] == "listeOeuvres"){
-		$activeList='active';
-		require("Views/oeuvres.php");
-		
-	}
-
-	if($_GET["action"] == "Supp"){
+	elseif($_GET["action"] == "Supp"){
 			$id = $_GET["id"];
 			$om -> supprimerOeuvre($id);	
 			header('Location: index.php?action=listeOeuvres');
@@ -103,26 +102,26 @@ else{
 
 
 				// devenir mecene
-	if($_GET["action"] == "FaireunDon"){
+	elseif($_GET["action"] == "FaireunDon"){
 		$activeAdd='active';
 		require("Views/FaireDon.php");
 
 	}
 
 				//visite
-				elseif($_GET["action"] == "Reservation"){
-					$activeAdd='active';
-					require("Views/reservation.php");
-					if(isset($_POST['Intitul'])){
-						$Intitul=$_POST['Intitul'];
-						$sujet=$_POST['sujet'];
-						$nbpers=$_POST['nbpers'];
-						$date=$_POST['date'];
-						$om -> addVisite($Intitul,$sujet,$nbpers,$date);
-						print_r("Envoyé ! :)");
-						}
+	elseif($_GET["action"] == "Reservation"){
+		$activeAdd='active';
+		require("Views/reservation.php");
+		if(isset($_POST['Intitul'])){
+			$Intitul=$_POST['Intitul'];
+			$sujet=$_POST['sujet'];
+			$nbpers=$_POST['nbpers'];
+			$date=$_POST['date'];
+			$om -> addVisite($Intitul,$sujet,$nbpers,$date);
+			print_r("Envoyé ! :)");
+			}
 						//print_r($message);
-					}
+		}
 
 
 	elseif($_GET["action"] == "ajoutOeuvre"){
