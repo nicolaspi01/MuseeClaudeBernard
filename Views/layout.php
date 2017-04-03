@@ -41,13 +41,13 @@ echo'<!DOCTYPE html>
 
 
       if (!$_SESSION["accueil"]){
-        echo '<li><a href="./index.php">Connection</a></li>';
+        echo '<li><a href="./index.php">Connexion</a></li>';
         echo '<li><a href="./index.php?action=inscrip">Inscription</a></li>'; 
       }
       else{
         if ( isset($_GET["action"])){
           if ($_GET["action"]=="inscrip")
-           echo '<li><a href="./index.php">Connection</a></li>';
+           echo '<li><a href="./index.php">Connexion</a></li>';
         }
         else
          echo '<li><a href="./index.php?action=inscrip">Inscription</a></li>';    
